@@ -1,0 +1,16 @@
+<?php return array (
+  'admin.search' => 'App\\Http\\Livewire\\Admin\\Search',
+  'admin.search-attachment' => 'App\\Http\\Livewire\\Admin\\SearchAttachment',
+  'admin.search-attachment-order' => 'App\\Http\\Livewire\\Admin\\SearchAttachmentOrder',
+  'admin.search-events' => 'App\\Http\\Livewire\\Admin\\SearchEvents',
+  'admin.search-package' => 'App\\Http\\Livewire\\Admin\\SearchPackage',
+  'admin.search-profile' => 'App\\Http\\Livewire\\Admin\\SearchProfile',
+  'admin.search-service' => 'App\\Http\\Livewire\\Admin\\SearchService',
+  'admin.search-user' => 'App\\Http\\Livewire\\Admin\\SearchUser',
+  'user.search-attachment' => 'App\\Http\\Livewire\\User\\SearchAttachment',
+  'user.search-attachment-order' => 'App\\Http\\Livewire\\User\\SearchAttachmentOrder',
+  'user.search-attachment-profile' => 'App\\Http\\Livewire\\User\\SearchAttachmentProfile',
+  'user.search-events' => 'App\\Http\\Livewire\\User\\SearchEvents',
+  'user.search-order' => 'App\\Http\\Livewire\\User\\SearchOrder',
+  'user.search-profile' => 'App\\Http\\Livewire\\User\\SearchProfile',
+);

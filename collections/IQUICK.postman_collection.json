@@ -1,0 +1,3380 @@
+{
+	"info": {
+		"_postman_id": "b7b0c6d7-1264-4322-8d68-ea300267286b",
+		"name": "IQUICK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22647345"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "refresh",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.url.query.add({key:'token',value:pm.environment.get('token')});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_apil}}auth/refresh",
+							"host": [
+								"{{url_apil}}auth"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}auth/refresh",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:13:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:13:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 16,\n        \"name\": \"mostafa1\",\n        \"email\": \"ms@ms.com11\",\n        \"title\": \"doctor\",\n        \"address\": \"cario cario\",\n        \"type\": \"doctor\",\n        \"patient_id\": [],\n        \"created_at\": \"2022-11-14T16:39:26.000000Z\",\n        \"updated_at\": \"2022-11-14T17:02:32.000000Z\"\n    },\n    \"token\": \"\",\n    \"message\": \"\",\n    \"code\": 200,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}auth/refresh",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:14 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let json =JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token\",json.token);\r",
+									"pm.request.headers.add(\"bearer\",json.token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstname",
+									"value": "mostafa",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "mohamed",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ms@ms.com555",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "momo123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_apil}}auth/register",
+							"host": [
+								"{{url_apil}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "validation register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "mostafa",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "ms@ms.com11",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "doctor",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "cairo cairo\n",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/register",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:12:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:12:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"token\": \"\",\n    \"message\": \"fail\",\n    \"code\": 422,\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "mostafa",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "ms@ms.com114",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "doctor",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "cairo cairo\n",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/register",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:13:00 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:13:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 17,\n        \"name\": \"mostafa\",\n        \"email\": \"ms@ms.com114\",\n        \"title\": \"doctor\",\n        \"address\": \"cairo cairo\",\n        \"type\": null,\n        \"patient_id\": [],\n        \"created_at\": \"2022-11-14T17:13:00.000000Z\",\n        \"updated_at\": \"2022-11-14T17:13:00.000000Z\"\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY2ODQ0NTk4MCwiZXhwIjoxNjY4NDQ5NTgwLCJuYmYiOjE2Njg0NDU5ODAsImp0aSI6ImJOczF5YWR2TGZwaVlCTkEiLCJzdWIiOjE3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.wcD_o1jq29T3_52mabvdLh2bmInXtDzREq7BKpJDqpU\",\n    \"message\": \"User created successfully\",\n    \"code\": 200,\n    \"errors\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let json =JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token\",json.token);\r",
+									"pm.request.headers.add(\"bearer\",json.token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ms@ms.com555",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "momo123",
+									"type": "text"
+								},
+								{
+									"key": "profile_id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_apil}}auth/login",
+							"host": [
+								"{{url_apil}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ms@ms.com11",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/login",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:37 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 16,\n        \"name\": \"mostafa1\",\n        \"email\": \"ms@ms.com11\",\n        \"title\": \"doctor\",\n        \"address\": \"cario cario\",\n        \"type\": \"doctor\",\n        \"patient_id\": [],\n        \"created_at\": \"2022-11-14T16:39:26.000000Z\",\n        \"updated_at\": \"2022-11-14T17:02:32.000000Z\"\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2ODQ0NjEzNywiZXhwIjoxNjY4NDQ5NzM3LCJuYmYiOjE2Njg0NDYxMzcsImp0aSI6IkxwU1ZoUjhWbzBYS09Xa0oiLCJzdWIiOjE2LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.RKDI__CTdjVlDzl2AR__i4yKJdJlQvECApeTRDuNT00\",\n    \"message\": \"success\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ms@ms.com1111",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/login",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:57 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:15:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"token\": false,\n    \"message\": \"Unauthorized\",\n    \"code\": 401,\n    \"errors\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.url.query.add({key:'token',value:pm.environment.get('token')});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_apil}}auth/logout",
+							"host": [
+								"{{url_apil}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}auth/logout",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:14:18 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:14:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"\",\n    \"token\": \"\",\n    \"message\": \"Successfully logged out\",\n    \"code\": 200,\n    \"errors\": []\n}"
+						},
+						{
+							"name": "Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}auth/logout",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:14:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Nov 2022 17:14:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Services",
+					"item": [
+						{
+							"name": "get services",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}services",
+									"host": [
+										"{{url_apil}}services"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get services",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}services",
+											"host": [
+												"{{url_apil}}services"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:21:44 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:21:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xcd338146a868576425658a2ae8709b49"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:21:43 GMT; Max-Age=7199; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 309,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 435,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 98,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 279,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 5,\n                \"name\": \"موبايل ابلكيشن\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 342,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 6,\n                \"name\": \"عمل اعلانات جوجل\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 135,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 7,\n                \"name\": \"SEO و تحسين محركات البحث\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 384,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 8,\n                \"name\": \"تصوير منتجات\",\n                \"slug\": \"الهوية-البصرية-البراند\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 227,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/profile/services?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/profile/services?page=1\",\n            \"prev\": null,\n            \"next\": null\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.previous\",\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://127.0.0.1:8000/api/profile/services?page=1\",\n                    \"label\": \"1\",\n                    \"active\": true\n                },\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.next\",\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://127.0.0.1:8000/api/profile/services\",\n            \"per_page\": 15,\n            \"to\": 8,\n            \"total\": 8\n        }\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Packages",
+					"item": [
+						{
+							"name": "get packages",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}packages",
+									"host": [
+										"{{url_apil}}packages"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get packages",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}packages",
+											"host": [
+												"{{url_apil}}packages"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:21:55 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:21:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X6cf1a206af9c1998ed6dbd452d5a3c9a"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:21:55 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"باقة ذهبية \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 222,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 1,\n                            \"num_service\": \"15\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 2,\n                            \"num_service\": \"17\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 3,\n                            \"num_service\": \"21\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 4,\n                            \"num_service\": \"12\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 5,\n                            \"num_service\": \"8\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 6,\n                            \"num_service\": \"10\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 7,\n                            \"num_service\": \"22\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 1,\n                            \"service_id\": 8,\n                            \"num_service\": \"21\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \" تطبيق مخصص \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 266,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 1,\n                            \"num_service\": \"19\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 2,\n                            \"num_service\": \"10\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 3,\n                            \"num_service\": \"22\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 4,\n                            \"num_service\": \"7\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 5,\n                            \"num_service\": \"9\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 6,\n                            \"num_service\": \"13\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 7,\n                            \"num_service\": \"10\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 2,\n                            \"service_id\": 8,\n                            \"num_service\": \"9\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \" تطبيق متجر إلكتروني \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 468,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 1,\n                            \"num_service\": \"18\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 2,\n                            \"num_service\": \"13\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 3,\n                            \"num_service\": \"12\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 4,\n                            \"num_service\": \"18\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 5,\n                            \"num_service\": \"19\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 6,\n                            \"num_service\": \"1\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 7,\n                            \"num_service\": \"17\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 3,\n                            \"service_id\": 8,\n                            \"num_service\": \"15\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \" تطبيق عرض محتوى \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 377,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 1,\n                            \"num_service\": \"8\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 2,\n                            \"num_service\": \"14\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 3,\n                            \"num_service\": \"7\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 4,\n                            \"num_service\": \"21\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 5,\n                            \"num_service\": \"9\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 6,\n                            \"num_service\": \"18\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 7,\n                            \"num_service\": \"5\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 4,\n                            \"service_id\": 8,\n                            \"num_service\": \"7\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 5,\n                \"name\": \"باقة برونزية \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 249,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 1,\n                            \"num_service\": \"16\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 2,\n                            \"num_service\": \"25\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 3,\n                            \"num_service\": \"17\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 4,\n                            \"num_service\": \"6\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 5,\n                            \"num_service\": \"13\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 6,\n                            \"num_service\": \"16\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 7,\n                            \"num_service\": \"7\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 5,\n                            \"service_id\": 8,\n                            \"num_service\": \"11\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            },\n            {\n                \"id\": 6,\n                \"name\": \"باقة فضية \",\n                \"slug\": \"باقة\",\n                \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                \"price\": 466,\n                \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                \"user_id\": 1,\n                \"service_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"الهوية البصرية و البراند ايدينتتى\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 309,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 1,\n                            \"num_service\": \"19\"\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"إدارة مواقع التواصل الاجتماعي\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 435,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 2,\n                            \"num_service\": \"22\"\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"اعلانات الفيسبوك و الانستجرام\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 98,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 3,\n                            \"num_service\": \"10\"\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"انشاء المواقع الالكترونية و المتاجر\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 279,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 4,\n                            \"num_service\": \"10\"\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"موبايل ابلكيشن\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 342,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 5,\n                            \"num_service\": \"5\"\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"عمل اعلانات جوجل\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 135,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 6,\n                            \"num_service\": \"3\"\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"SEO و تحسين محركات البحث\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 384,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 7,\n                            \"num_service\": \"15\"\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"تصوير منتجات\",\n                        \"slug\": \"الهوية-البصرية-البراند\",\n                        \"image\": null,\n                        \"image_single\": null,\n                        \"small_description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها\",\n                        \"description\": \"فى اوت اوف ذا بوكس تتركز أهمية الهوية الخاصة بالشركات والمؤسسات في كونها واجهة تعبر عن صورة الشركة في المقام الأول أمام عملائها ، بالإضافة إلى كونها تحتوي على المعلومات الخاصة بالشركة من حيث : الخدمات التي تقدمها الشركة ، كروت شخصية للمدير و رؤساء الأقسام ، تصميمات الأظرف وأوراق الشركة بالكامل بما يتفق مع سياساتها و أهدافها .\",\n                        \"price\": 227,\n                        \"user_id\": 1,\n                        \"status\": \"1\",\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"updated_at\": \"2023-02-04T07:33:02.000000Z\",\n                        \"pivot\": {\n                            \"package_id\": 6,\n                            \"service_id\": 8,\n                            \"num_service\": \"18\"\n                        }\n                    }\n                ],\n                \"created_at\": \"2023-02-04T07:33:02.000000Z\",\n                \"updated_at\": \"2023-02-04T07:33:02.000000Z\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/profile/packages?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/profile/packages?page=1\",\n            \"prev\": null,\n            \"next\": null\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.previous\",\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://127.0.0.1:8000/api/profile/packages?page=1\",\n                    \"label\": \"1\",\n                    \"active\": true\n                },\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.next\",\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://127.0.0.1:8000/api/profile/packages\",\n            \"per_page\": 15,\n            \"to\": 6,\n            \"total\": 6\n        }\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Account Setting",
+					"item": [
+						{
+							"name": "Account Setting",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}account/setting",
+									"host": [
+										"{{url_apil}}account"
+									],
+									"path": [
+										"setting"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Account Setting",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}account/setting",
+											"host": [
+												"{{url_apil}}account"
+											],
+											"path": [
+												"setting"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:14 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X8fd99cfac957853f51aeb2c093275a14"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:22:14 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"order_count\": 2,\n        \"order_count_pending\": 0,\n        \"order_count_done\": 0,\n        \"order_count_canceled\": 0,\n        \"order_count_successful\": 2,\n        \"profile_count\": 3\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Edit profile",
+					"item": [
+						{
+							"name": "edit profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "mostafa hello",
+											"type": "text"
+										},
+										{
+											"key": "date_of_Birth",
+											"value": "2023-02-04 ",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/lenovo/Downloads/202303121250202303121249202303110955Screenshot (4).png"
+										},
+										{
+											"key": "country",
+											"value": "egypt",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "cairo",
+											"type": "text"
+										},
+										{
+											"key": "post_number",
+											"value": "12 cairo",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "12 cairo",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "01122455867",
+											"type": "text"
+										},
+										{
+											"key": "firstname",
+											"value": "mostafa1",
+											"type": "text"
+										},
+										{
+											"key": "lastname",
+											"value": "mohamed",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}edit/profile/8",
+									"host": [
+										"{{url_apil}}edit"
+									],
+									"path": [
+										"profile",
+										"8"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store profile",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "mostafa hello",
+													"type": "text"
+												},
+												{
+													"key": "date_of_Birth",
+													"value": "2023-02-04 ",
+													"type": "text"
+												},
+												{
+													"key": "gender",
+													"value": "male",
+													"type": "text"
+												},
+												{
+													"key": "profile_image",
+													"type": "file",
+													"src": "/C:/Users/lenovo/Pictures/Screenshots/Screenshot (1).png"
+												},
+												{
+													"key": "country",
+													"value": "egypt",
+													"type": "text"
+												},
+												{
+													"key": "city",
+													"value": "cairo",
+													"type": "text"
+												},
+												{
+													"key": "post_number",
+													"value": "12 cairo",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "12 cairo",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "01122455867",
+													"type": "text"
+												},
+												{
+													"key": "firstname",
+													"value": "mostafa",
+													"type": "text"
+												},
+												{
+													"key": "lastname",
+													"value": "mohamed",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}edit/profile/11",
+											"host": [
+												"{{url_apil}}edit"
+											],
+											"path": [
+												"profile",
+												"11"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:25 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xba842ac7fa3467990b620364e36cf74c"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:22:25 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"username\": \"mostafa hello\",\n        \"date_of_Birth\": \"2023-02-04\",\n        \"gender\": \"male\",\n        \"profile_image\": \"202302051222Screenshot (1).png\",\n        \"country\": \"egypt\",\n        \"city\": \"cairo\",\n        \"post_number\": \"12 cairo\",\n        \"address\": \"12 cairo\",\n        \"phone\": \"01122455867\",\n        \"user_id\": 11,\n        \"deleted_at\": null,\n        \"created_at\": \"2023-02-05T09:36:04.000000Z\",\n        \"updated_at\": \"2023-02-05T12:22:25.000000Z\"\n    },\n    \"message\": \"تم التحديث بنجاح\",\n    \"code\": 202,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "change password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "old_password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}change/password?_method=put",
+									"host": [
+										"{{url_apil}}change"
+									],
+									"path": [
+										"password"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "put"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "change password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "old_password",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "new_password",
+													"value": "123456789",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "123456789",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}change/password?_method=put",
+											"host": [
+												"{{url_apil}}change"
+											],
+											"path": [
+												"password"
+											],
+											"query": [
+												{
+													"key": "_method",
+													"value": "put"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 09:37:29 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 09:37:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X6e6d259998d85aa57460993467cc3ede"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"fail\",\n    \"code\": 422,\n    \"errors\": \"كلمة المرور القديمة غير صحيحة\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Profiles",
+					"item": [
+						{
+							"name": "get profiles",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url_apil}}profiles",
+									"host": [
+										"{{url_apil}}profiles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get profiles",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url_apil}}profiles",
+											"host": [
+												"{{url_apil}}profiles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:42 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:42 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xd553ff57acdecfbec35c345097d08b3f"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:22:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"prooo\",\n                \"link\": \"https://iquick.eraasoft.com/profile/orders\",\n                \"file\": \"202302051015Screenshot (1).png\",\n                \"attachment_id\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"ffff\",\n                        \"file\": \"202302051041202302051034202301291839202301221749202301211619avatar5.png\",\n                        \"attachmentable_type\": \"App\\\\Models\\\\Profile\",\n                        \"attachmentable_id\": 1,\n                        \"user_id\": 1,\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-05T10:41:49.000000Z\",\n                        \"updated_at\": \"2023-02-05T10:41:49.000000Z\"\n                    }\n                ],\n                \"created_at\": \"2023-02-04T08:04:10.000000Z\",\n                \"updated_at\": \"2023-02-05T10:15:38.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"profile pend\",\n                \"link\": \"http://127.0.0.1:8000/home\",\n                \"file\": null,\n                \"attachment_id\": [],\n                \"created_at\": \"2023-02-04T08:12:03.000000Z\",\n                \"updated_at\": \"2023-02-04T08:12:03.000000Z\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"profile pend\",\n                \"link\": \"http://127.0.0.1:8000/home\",\n                \"file\": null,\n                \"attachment_id\": [],\n                \"created_at\": \"2023-02-04T09:25:15.000000Z\",\n                \"updated_at\": \"2023-02-04T09:25:15.000000Z\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"profile 1\",\n                \"link\": \"https://iquick.eraasoft.com/profile/orders\",\n                \"file\": null,\n                \"attachment_id\": [],\n                \"created_at\": \"2023-02-05T10:09:19.000000Z\",\n                \"updated_at\": \"2023-02-05T10:09:19.000000Z\"\n            },\n            {\n                \"id\": 7,\n                \"name\": \"profile 1\",\n                \"link\": \"https://iquick.eraasoft.com/profile/orders\",\n                \"file\": \"202302051011Screenshot (1).png\",\n                \"attachment_id\": [\n                    {\n                        \"id\": 2,\n                        \"name\": \"hhh\",\n                        \"file\": \"202302051042202302051034202301291839202301221749202301211619avatar5.png\",\n                        \"attachmentable_type\": \"App\\\\Models\\\\Profile\",\n                        \"attachmentable_id\": 7,\n                        \"user_id\": 1,\n                        \"deleted_at\": null,\n                        \"created_at\": \"2023-02-05T10:42:55.000000Z\",\n                        \"updated_at\": \"2023-02-05T10:42:55.000000Z\"\n                    }\n                ],\n                \"created_at\": \"2023-02-05T10:11:54.000000Z\",\n                \"updated_at\": \"2023-02-05T10:11:54.000000Z\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/profile/profiles?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/profile/profiles?page=1\",\n            \"prev\": null,\n            \"next\": null\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.previous\",\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://127.0.0.1:8000/api/profile/profiles?page=1\",\n                    \"label\": \"1\",\n                    \"active\": true\n                },\n                {\n                    \"url\": null,\n                    \"label\": \"pagination.next\",\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://127.0.0.1:8000/api/profile/profiles\",\n            \"per_page\": 15,\n            \"to\": 5,\n            \"total\": 5\n        }\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "store profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "profile 1",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://iquick.eraasoft.com/profile/orders",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/lenovo/Downloads/202303121250202303121249202303110955Screenshot (4) (1).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}profiles",
+									"host": [
+										"{{url_apil}}profiles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store profile",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "profile 1",
+													"type": "text"
+												},
+												{
+													"key": "link",
+													"value": "https://iquick.eraasoft.com/profile/orders",
+													"type": "text"
+												},
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/Users/lenovo/Pictures/Screenshots/Screenshot (1).png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}profiles",
+											"host": [
+												"{{url_apil}}profiles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:48 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xcbaf4a58b228abd618055fabb7f5af3b"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:22:48 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"اضيف بنجاح\",\n    \"code\": 201,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "prooo1",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://iquick.eraasoft.com/profile/orders",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/lenovo/Pictures/Screenshots/Screenshot (1).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}profiles/1?_method=put",
+									"host": [
+										"{{url_apil}}profiles"
+									],
+									"path": [
+										"1"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "put"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update profile",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "prooo",
+													"type": "text"
+												},
+												{
+													"key": "link",
+													"value": "https://iquick.eraasoft.com/profile/orders",
+													"type": "text"
+												},
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/Users/lenovo/Pictures/Screenshots/Screenshot (1).png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}profiles/1?_method=put",
+											"host": [
+												"{{url_apil}}profiles"
+											],
+											"path": [
+												"1"
+											],
+											"query": [
+												{
+													"key": "_method",
+													"value": "put"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:55 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:22:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X871c7485321f7228c8b01d17308acc8c"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:22:55 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"تم التحديث بنجاح\",\n    \"code\": 202,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "show profile attachment",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}profiles/1",
+									"host": [
+										"{{url_apil}}profiles"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show profile attachment",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}profiles/1",
+											"host": [
+												"{{url_apil}}profiles"
+											],
+											"path": [
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:07 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xe717f27b9b73fbb9afbe41dde5bd590c"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:23:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"prooo\",\n        \"link\": \"https://iquick.eraasoft.com/profile/orders\",\n        \"file\": \"202302051222Screenshot (1).png\",\n        \"attachment_id\": [\n            {\n                \"id\": 1,\n                \"name\": \"ffff\",\n                \"file\": \"202302051041202302051034202301291839202301221749202301211619avatar5.png\",\n                \"attachmentable_type\": \"App\\\\Models\\\\Profile\",\n                \"attachmentable_id\": 1,\n                \"user_id\": 1,\n                \"deleted_at\": null,\n                \"created_at\": \"2023-02-05T10:41:49.000000Z\",\n                \"updated_at\": \"2023-02-05T10:41:49.000000Z\"\n            }\n        ],\n        \"created_at\": \"2023-02-04T08:04:10.000000Z\",\n        \"updated_at\": \"2023-02-05T12:22:55.000000Z\"\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete profile",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}profiles/2",
+									"host": [
+										"{{url_apil}}profiles"
+									],
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete profile",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}profiles/4",
+											"host": [
+												"{{url_apil}}profiles"
+											],
+											"path": [
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:28 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X023a0782a466479445c5ed12496e29da"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:23:28 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"تم الحذف\",\n    \"code\": 204,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get sections",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url_apil}}sections",
+									"host": [
+										"{{url_apil}}sections"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "get orders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}orders",
+									"host": [
+										"{{url_apil}}orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get orders",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}orders",
+											"host": [
+												"{{url_apil}}orders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:38 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X4b5dd9ba0ec1569fb268f3c9d507c7ba"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:23:38 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"mostafa mohamed\",\n                \"file\": null,\n                \"status\": \"successful\",\n                \"total_price\": 309,\n                \"description_cust\": null,\n                \"type_order\": \"service\",\n                \"user_id\": 11,\n                \"type_id\": 1,\n                \"profile_id\": 1,\n                \"rating\": \"4\",\n                \"attachment_id\": [],\n                \"created_at\": \"2023-02-05T11:54:50.000000Z\",\n                \"updated_at\": \"2023-02-05T11:59:38.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"mostafa mohamed\",\n                \"file\": null,\n                \"status\": \"successful\",\n                \"total_price\": 222,\n                \"description_cust\": null,\n                \"type_order\": \"package\",\n                \"user_id\": 11,\n                \"type_id\": 1,\n                \"profile_id\": 1,\n                \"rating\": null,\n                \"attachment_id\": [],\n                \"created_at\": \"2023-02-05T11:57:05.000000Z\",\n                \"updated_at\": \"2023-02-05T11:57:05.000000Z\"\n            }\n        ]\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "select profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let json =JSON.parse(responseBody);\r",
+											"pm.environment.set(\"token\",json.token);\r",
+											"pm.request.headers.add(\"bearer\",json.token);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}get/profile/id/1",
+									"host": [
+										"{{url_apil}}get"
+									],
+									"path": [
+										"profile",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "select profile",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}get/profile/id/1",
+											"host": [
+												"{{url_apil}}get"
+											],
+											"path": [
+												"profile",
+												"id",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:47 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xb3af43f37595d318b67986c488f1c735"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:23:47 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"success\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "show order attachment",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}orders/1",
+									"host": [
+										"{{url_apil}}orders"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show order attachment",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}orders/1",
+											"host": [
+												"{{url_apil}}orders"
+											],
+											"path": [
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:52 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:23:52 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "53"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xeb713a22373add55ebdaadc1bf147896"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:23:52 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"mostafa mohamed\",\n        \"file\": null,\n        \"status\": \"successful\",\n        \"total_price\": 309,\n        \"description_cust\": null,\n        \"type_order\": \"service\",\n        \"user_id\": 11,\n        \"type_id\": 1,\n        \"profile_id\": 1,\n        \"rating\": \"4\",\n        \"attachment_id\": [],\n        \"created_at\": \"2023-02-05T11:54:50.000000Z\",\n        \"updated_at\": \"2023-02-05T11:59:38.000000Z\"\n    },\n    \"message\": \"sccess\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "store order to service",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "service_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}serviceorders",
+									"host": [
+										"{{url_apil}}serviceorders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store order to service",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												},
+												{
+													"key": "service_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}serviceorders",
+											"host": [
+												"{{url_apil}}serviceorders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:02 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "52"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X42d47cc879f7854f96b80a07e165d957"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:24:02 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"تم ارسال الطلب\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "store order to package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "package_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}packageorders",
+									"host": [
+										"{{url_apil}}packageorders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store order to package",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												},
+												{
+													"key": "package_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}packageorders",
+											"host": [
+												"{{url_apil}}packageorders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:10 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "51"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X0b38321a58d2b0a646b960a1edf4595c"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:24:10 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"تم ارسال الطلب\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "order rating",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "star",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}order/rating/5",
+									"host": [
+										"{{url_apil}}order"
+									],
+									"path": [
+										"rating",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "order rating",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "star",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}order/rating/1",
+											"host": [
+												"{{url_apil}}order"
+											],
+											"path": [
+												"rating",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:15 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X23e9e3cbe27875bcf02b7bd9e34cfe41"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:24:15 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"success\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "orders/export/data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}orders/export/data",
+									"host": [
+										"{{url_apil}}orders"
+									],
+									"path": [
+										"export",
+										"data"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Events",
+					"item": [
+						{
+							"name": "get events",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}events",
+									"host": [
+										"{{url_apil}}events"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get events",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url_apil}}events",
+											"host": [
+												"{{url_apil}}events"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:25 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 05 Feb 2023 12:24:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xf167263003f47cd9d898ee6743d4c8cb"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=c2wQ3tE5LyDv43Ciiyli39gU1zgWL0fuqRxaEiRn; expires=Sun, 05 Feb 2023 14:24:25 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [],\n    \"message\": \"success\",\n    \"code\": 200,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "events/export/data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}events/export/data",
+									"host": [
+										"{{url_apil}}events"
+									],
+									"path": [
+										"export",
+										"data"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Download",
+					"item": [
+						{
+							"name": "download",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}attachmentdownload/202302051041202302051034202301291839202301221749202301211619avatar5.png",
+									"host": [
+										"{{url_apil}}attachmentdownload"
+									],
+									"path": [
+										"202302051041202302051034202301291839202301221749202301211619avatar5.png"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Live chat",
+					"item": [
+						{
+							"name": "send message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "message",
+											"value": "hi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_apil}}sendMessage",
+									"host": [
+										"{{url_apil}}sendMessage"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "message",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}sendMessage",
+											"host": [
+												"{{url_apil}}sendMessage"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Mar 2023 07:08:23 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Mar 2023 07:08:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "Xe41cc812572608484d5091ecd2f730de"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=kaNuRGzE23qixvpGmhwRMUxKQmJDdwkXfjqX7Rt9; expires=Tue, 07-Mar-2023 09:08:23 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"\",\n    \"code\": 404,\n    \"errors\": {\n        \"message\": [\n            \"هذا الحقل مطلوب.\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "send message",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "message",
+													"value": "hi",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url_apil}}sendMessage",
+											"host": [
+												"{{url_apil}}sendMessage"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Mar 2023 07:08:39 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 07 Mar 2023 07:08:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.0"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "phpdebugbar-id",
+											"value": "X29b9f3a0781f0c1133bb91f74587bcb8"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "laravel_session=kaNuRGzE23qixvpGmhwRMUxKQmJDdwkXfjqX7Rt9; expires=Tue, 07-Mar-2023 09:08:39 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"\",\n    \"message\": \"success\",\n    \"code\": 202,\n    \"errors\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get messages",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}getMessage",
+									"host": [
+										"{{url_apil}}getMessage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search",
+					"item": [
+						{
+							"name": "search service",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}search/service?name=الهوية",
+									"host": [
+										"{{url_apil}}search"
+									],
+									"path": [
+										"service"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "الهوية"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "search package",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}search/package?name=باقة ذهبية",
+									"host": [
+										"{{url_apil}}search"
+									],
+									"path": [
+										"package"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "باقة ذهبية"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notice",
+					"item": [
+						{
+							"name": "notice",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url_apil}}notice",
+									"host": [
+										"{{url_apil}}notice"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.request.url.query.add({key:'token',value:pm.environment.get('token')});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
